@@ -113,9 +113,48 @@ Authorization = Bearer {token}
 ```json
 {
     "name" :"Daily plan 1",
-    "description" :"Descriptionk Daily plan 1",
+    "description" :"Description Daily plan 1",
     "date" : "2021-01-01",
-    "ImportanceTypeId" :4
+    "importanceTypeId" :4
+
+}
+```
+### WeeklyPlan
+```
+[POST] domain.com/api/weeklyplan/add
+```
+> Request Header
+```
+Authorization = Bearer {token}
+```
+> Content Body Form Data(JSON)
+```json
+{
+    "name" :"Weekly plan 1",
+    "description" :"Description Weekly plan 1",
+    "weekNumber" : 35,
+    "year" : 2020,
+    "importanceTypeId" : 1
+
+}
+```
+### MonthlyPlan
+```
+[POST] domain.com/api/monthlyplan/add
+```
+> Request Header
+```
+Authorization = Bearer {token}
+```
+> Content Body Form Data(JSON)
+```json
+{
+    "name" :"Monthly plan 1",
+    "description" :"Description Monthly plan 1",
+    "date" : "2021-01-01",
+    "year":2020,
+    "month":11,
+    "importanceTypeId" :2
 
 }
 ```
