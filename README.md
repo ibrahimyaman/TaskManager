@@ -68,7 +68,54 @@ Authorization = Bearer {token}
 {
     "token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJlbWFpbCI6ImJ1cmdhejM5QG1haWwuY29tLnRyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImlicmFoaW0geWFtYW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJMb2dnZWRJbiIsIm5iZiI6MTU5NTgyNzE4MywiZXhwIjoxNTk1ODI4MDgzLCJpc3MiOiJCYWNrZW5kIERldmVsb3BlciDvv71icmFoaW0gWWFtYW4iLCJhdWQiOiJCYWNrZW5kIERldmVsb3BlciDvv71icmFoaW0gWWFtYW4ifQ.JmVwFko5onqTrggLc-NR0tv6dRCFifm-CRaKWSv55YQ",
     "expiration": "2020-07-27T08:34:43.3149194+03:00",
-    "refreshToken": "Oi8-cRg_dGrekXaGhvmAR_XXRBHLdrKD",
+    "refreshToken": "tPl8-cRg_dOFL0VZk_3cYWRtR_XXLdr86",
     "createdTime": "2020-07-27T08:19:43.3156069+03:00"
+}
+```
+## Plan Operations
+We will need user authorization to access user informations(Id, Name etc.), while plan operations are being done. After we get JWT, new plan can be added, added plan can be updated and deleted with this JWT. 
+
+### Importance Types
+When we plan events or activities or works, we describe it by using importance/urgent priority. And there is an [Importance Matrix](https://www.groupmap.com/map-templates/urgent-important-matrix/) terminology. So we will add ImportanceTypeId in all types of plans. To do that:
+```
+[GET] domain.com/api/parameter/getimportancetypes
+```
+> Return Value
+```json
+[
+    {
+        "id": 1,
+        "description": "Important - Urgent",        
+    },
+    {
+        "id": 2,
+        "description": "Important - Not Urgent",        
+    },
+    {
+        "id": 3,
+        "description": "Not Important - Urgent",        
+    },
+    {
+        "id": 4,
+        "description": "Not Important - Not Urgent",       
+    }
+]
+```
+### DailyPlan
+```
+[POST] domain.com/api/dailyplan/add
+```
+> Request Header
+```
+Authorization = Bearer {token}
+```
+> Content Body Form Data(JSON)
+```json
+{
+    "name" :"Daily plan 1",
+    "description" :"Descriptionk Daily plan 1",
+    "date" : "2021-01-01",
+    "ImportanceTypeId" :4
+
 }
 ```
